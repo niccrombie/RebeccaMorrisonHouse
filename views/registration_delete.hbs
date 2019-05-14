@@ -1,0 +1,10 @@
+<h2>Review Before Deleting</h2>
+<h4>You are about to delete {{registration.guest.firstName}}'s stay from {{registration.checkedIn}} to {{registration.checkedOut}}.</h4> <br>
+
+<p>It is recommended that deletions only be used when duplicates occur or creation is accidental. If you made an error with this record, please update the record rather than deleting.</p>
+
+<br>
+
+<p>If you delete this record, this action Cannot be undone. Do you wish to continue?</p>
+<form action="/admin/Registration/{{registration._id}}/delete" method="POST">
+<input type="submit" value="Delete Record"  class="btn-info"><br>

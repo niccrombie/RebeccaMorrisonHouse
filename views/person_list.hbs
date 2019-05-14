@@ -1,0 +1,64 @@
+
+<input type="text" id="myInput" placeholder="Search for names.." title="Type in a name">
+<table id="myTable" class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Last Name</th>
+        <th>First Name</th>
+        <th>Email</th>
+        <th>Cell Phone</th>
+        <th></th>
+      </tr>
+    </thead>
+    {{#if guest_list}}
+	{{#each guest_list}}
+	<tr>
+        <td>
+            {{lastName}}
+        </td>
+        <td>
+			{{firstName}}
+        </td>
+        <td>
+			{{email}}
+        </td>
+        <td>
+			{{cellPhone}}
+        </td>
+        <td>
+            <input type="button" value="More Details" class="btn-info" onclick="window.location.href='{{url}}'">
+        </td>
+    </tr>
+	{{/each}}
+	{{else}}
+		<h2>
+			No Guest's Found
+		</h2>
+	{{/if}}
+</table>
+
+<input type="button" value="New Guest" class="btn-info" onclick="window.location.href='/users/person/create'">
+
+<script>
+  function filterTable(event) {
+    var filter = event.target.value.toUpperCase();
+    var rows = document.querySelector("#myTable tbody").rows;
+    
+    for (var i = 0; i < rows.length; i++) {
+        var firstCol = rows[i].cells[0].textContent.toUpperCase();
+        var secondCol = rows[i].cells[1].textContent.toUpperCase();
+        var thirdCol = rows[i].cells[2].textContent.toUpperCase();
+        var fourthCol = rows[i].cells[3].textContent.toUpperCase();
+        if (
+          firstCol.indexOf(filter) > -1 
+          || secondCol.indexOf(filter) > -1 
+          || thirdCol.indexOf(filter) > -1
+          || fourthCol.indexOf(filter) > -1 
+          )
+          {rows[i].style.display = "";}
+        else {rows[i].style.display = "none";}      
+    }
+}
+
+document.querySelector('#myInput').addEventListener('keyup', filterTable, false);
+</script>

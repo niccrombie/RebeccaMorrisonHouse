@@ -1,0 +1,99 @@
+<p>First Name: {{person.firstName}}</p>
+<p>Last Name: {{person.lastName}}</p>
+<p>Cell Phone: {{person.cellPhone}}</p>
+<p>Home Phone: {{person.homePhone}}</p>
+<p>Home Address: {{person.homeAddress}}</p>
+<p>City: {{person.city}}</p>
+<p>State: {{person.state}}</p>
+<p>Zip Code: {{person.zipCode}}</p>
+<p>Emergency Contact: {{person.emergencyContact}}</p>
+<p>Emergency Contact Phone Number: {{person.emergencyPhone}}</p>
+
+<input type="button" value="Edit Details" class="btn-info" onclick="window.location.href='{{person.url}}/update'">
+<input type="button" value="Delete" class="btn-info" onclick="window.location.href='{{person.url}}/delete'">
+<input type="button" value="Start new registration" class="btn-info" onclick="window.location.href='../../users/registration/{{person.id}}/create'">
+<input type="button" value="Start new donation" class="btn-info" onclick="window.location.href='../../users/donation/{{person.id}}/create'">
+<br><br>
+<!--           DONATATION               -->
+<input type="text" id="myInput" placeholder="Search for donation records.." title="Search">
+<table id="myTable" class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Amount</th>
+        <th>Type</th>
+		<th></th>
+      </tr>
+    </thead>
+    {{#if donation}}
+    {{#each donation}}
+    <tr>
+		<td>
+			{{donationDate1}}
+		</td>
+		<td>
+            {{donationAmount}}
+		</td><td>
+            {{donationType}}
+		</td>
+		<td>
+			<input type="button" value="More Details" class="btn-info" onclick="window.location.href='{{url}}'">
+		</td>
+	</tr>
+    {{/each}}
+    {{else}}
+        <h1>No donation Records</h1>
+    {{/if}}
+</table>
+<input type="text" id="myInput" placeholder="Search for names.." title="Type in a name">
+<table id="myTable" class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Check-In</th>
+        <th>Check-Out</th>
+        <th></th>
+      </tr>
+    </thead>
+    {{#if registration}}
+    {{#each registration}}
+    <tr>
+		<td>
+			{{checkedIn}}
+		</td>
+		<td>
+            {{#if checkedOut}}
+            {{checkedOut}}
+            {{else}}
+			<p>Not checked out</p>
+            {{/if}}
+		</td>
+		<td>
+			<input type="button" value="More Details" class="btn-info" onclick="window.location.href='{{url}}'">
+		</td>
+	</tr>
+    {{/each}}
+    {{else}}
+        <h1>No Registration Records</h1>
+    {{/if}}
+</table>
+<script>
+  function filterTable(event) {
+    var filter = event.target.value.toUpperCase();
+    var rows = document.querySelector("#myTable tbody").rows;
+    
+    for (var i = 0; i < rows.length; i++) {
+        var firstCol = rows[i].cells[0].textContent.toUpperCase();
+        var secondCol = rows[i].cells[1].textContent.toUpperCase();
+        var thirdCol = rows[i].cells[2].textContent.toUpperCase();
+        if (
+          firstCol.indexOf(filter) > -1 
+          || secondCol.indexOf(filter) > -1 
+          || thirdCol.indexOf(filter) > -1
+          )
+          {rows[i].style.display = "";}
+        else {rows[i].style.display = "none";}      
+    }
+}
+
+document.querySelector('#myInput').addEventListener('keyup', filterTable, false);
+</script>

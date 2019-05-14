@@ -1,0 +1,7 @@
+<h2>Review before Deleting</h2>
+<h2>Room ID: {{room._id}}</h2>
+<p>Room Number: {{room.roomNumber}}</p>
+<p>Handicapped?: {{room.handicapAccess}}</p>
+<p>Status: {{room.status}}</p>
+<form action="{{room.url}}/delete" method="POST">
+<input type="submit" value="Delete Current Room?" class="btn-info><br>

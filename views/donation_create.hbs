@@ -1,0 +1,35 @@
+<p>Use the following form to add a new donation entry to the database. </p>
+
+<form action="/users/Donation/create" method="POST">
+	<label for="guest">Guest Name: {{guests.name}}</label><br>
+	<input name="guest" type="hidden" value="{{guests._id}}" id="guest">
+	<br>
+	
+	<label for="donationType">Donation Type:</label>
+	<input type="text" name="donationType" id="donationType" placeholder="Required">
+	<br>
+	<br>
+	
+	<label for="donationDate">Donation Date:</label>
+	<input type="date" name="donationDate" id="donationDate">
+	<br>
+	<br>
+	
+	<label for="donationAmount">Donation Amount:</label>
+	<input type="text" name="donationAmount" id="donationAmount" placeholder="Required">
+	<br>
+	<br>
+	
+	<label for="adoptionDate">AdoptionDate:</label>
+	<input type="date" name="adoptionDate" id="adoptionDate">
+	<br>
+	<br>
+	
+	<label for="adoptionMessage">Adoption Message:</label>
+	<input type="text" name="adoptionMessage" id="adoptionMessage" placeholder="Required">
+	<br>
+	<br>
+	
+	<input type="submit" value="Add New Entry" class="btn-info"><br>
+	
+</form>

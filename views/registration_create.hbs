@@ -1,0 +1,73 @@
+<p>Use the following form to add a new registration to the guest's record.</p>
+
+<form action="/users/Registration/create" method="POST">
+	<label for="guest">Guest Name: {{guests.name}}</label><br>
+	<input name="guest" type="hidden" value="{{guests._id}}" id="guest">
+	<br>
+	<label for="patient">Patient Name:</label><br>
+	<input name="patient" type="text" id="patient"><br>
+        
+	<label for="patientLoc">Patient Room:</label><br>
+	<input name="patientLoc" type="text" id="patientLoc"><br> 
+	
+	<br>
+	
+	<label for="checkIn">Check In Date: </label>
+	<input name="checkIn" type="Date" id="checkIn"><br>
+	<br>
+	<br>
+	
+	<label for="checkOut">Check Out Date: </label>
+	<input type="Date" name="checkOut" id="checkOut">
+	
+	<br>
+	<br>
+	
+	<select size="1" name="room" id="room">
+	<option>Select a room...</option>
+	{{#each rooms}}
+		<option value="{{_id}}">{{Number}}</option>
+	{{/each}}
+	</select>
+	
+	<br>
+	<br>
+	
+	<p>Select Deposit Type:</p>
+	<input type="radio" name="deposit" id="deposit" value="Check">Check<br>
+	<input type="radio" name="deposit" id="deposit" value="Cash">Cash<br>
+	<input type="radio" name="deposit" id="deposit" value="Credit">Credit<br>
+	
+	<br>
+	
+	<label for="numbKeys"># of Keys issued: </label>
+	<input type="text" name="numbKeys" id="numbKeys">
+	
+	<br>
+	
+	<p>Items on Loan:</p><br>
+	<textarea name="loans" id="loans" cols="40" rows="4">Enter items on loan here</textarea>
+	
+	<br><br>
+	
+	<p>Comments:</p><br>
+	<textarea name="comments" id="comments" cols="40" rows="4">Comments</textarea>
+	
+	<br>
+	
+	<label for="vehicle">Car Model: </label>
+	<input type="text" name="vehicle" id="vehicle">
+	
+	<br>
+	
+	<label for="plateNum">License Plate Number: </label>
+	<input type="text" name="plateNum" id="plateNum">
+	
+	<br>
+	<label for="staff">Staff Initials: </label>
+	<input type="text" name="staff" id="staff">
+	<br>
+	
+	<input type="submit" value="Add new Stay" class="btn-info"><br>
+	
+</form>
